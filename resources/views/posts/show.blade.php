@@ -10,7 +10,7 @@
 @include('navbar')
 
 <main class="flex-grow container mx-auto px-4 py-8">
-    <article class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <article class="max-w-4xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
         <div class="p-8">
                 <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-4">
                     {{ $post->category }}
@@ -18,7 +18,7 @@
             <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $post->title }}</h1>
             <div class="text-gray-500 mb-6">{{ $post->created_at->format('d.m.Y') }}</div>
 
-            <div class="prose max-w-none text-gray-700 text-lg leading-relaxed">
+            <div class="text-gray-700 text-lg leading-relaxed">
                 {!! nl2br(e($post->content)) !!}
             </div>
         </div>
@@ -29,7 +29,7 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Похожие статьи</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach($relatedPosts as $relatedPost)
-                    <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <div class="bg-white rounded-lg shadow-sm p-4">
                         <h3 class="font-semibold text-gray-800 mb-2">{{ $relatedPost->title }}</h3>
                         <a href="{{ route('posts.show', $relatedPost->slug) }}" class="text-green-600 hover:text-green-800 text-sm">
                             Читать далее

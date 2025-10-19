@@ -17,7 +17,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         @foreach($recipes as $recipe)
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-3">
                         <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
@@ -30,8 +30,8 @@
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ $recipe->title }}</h3>
                     <p class="text-gray-600 mb-4">{{ $recipe->description }}</p>
                     <div class="flex justify-between text-sm text-gray-500 mb-4">
-                        <span>⏱️ {{ $recipe->prep_time + $recipe->cook_time }} мин</span>
-                        <span>🍽️ {{ $recipe->servings }} порции</span>
+                        <span>{{ $recipe->prep_time + $recipe->cook_time }} мин</span>
+                        <span>{{ $recipe->servings }} порции</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-gray-500">{{ $recipe->created_at->format('d.m.Y') }}</span>

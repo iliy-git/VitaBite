@@ -17,13 +17,13 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         @foreach($posts as $post)
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="p-6">
                     <span class="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mb-3">
                         {{ $post->category }}
                     </span>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ $post->title }}</h3>
-                    <p class="text-gray-600 mb-4 line-clamp-3">{{ $post->content }}</p>
+                    <p class="text-gray-600 mb-4">{{ Str::limit($post->content, 120) }}</p>
                     <div class="flex justify-between items-center">
                         <span class="text-sm text-gray-500">{{ $post->created_at->format('d.m.Y') }}</span>
                         <a href="{{ route('posts.show', $post->slug) }}" class="text-green-600 hover:text-green-800 font-medium">

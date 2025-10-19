@@ -10,7 +10,7 @@
 @include('navbar')
 
 <main class="flex-grow container mx-auto px-4 py-8">
-    <article class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <article class="max-w-4xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
         <div class="p-8">
             <div class="flex flex-wrap gap-2 mb-4">
                     <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">
@@ -25,16 +25,13 @@
             <p class="text-xl text-gray-600 mb-6">{{ $recipe->description }}</p>
 
             <div class="flex gap-6 text-sm text-gray-500 mb-8">
-                <div class="flex items-center">
-                    <span class="mr-2">🕒</span>
+                <div>
                     <span>Подготовка: {{ $recipe->prep_time }} мин</span>
                 </div>
-                <div class="flex items-center">
-                    <span class="mr-2">👨‍🍳</span>
+                <div>
                     <span>Приготовление: {{ $recipe->cook_time }} мин</span>
                 </div>
-                <div class="flex items-center">
-                    <span class="mr-2">🍽️</span>
+                <div>
                     <span>{{ $recipe->servings }} порции</span>
                 </div>
             </div>
@@ -49,7 +46,7 @@
 
                 <div>
                     <h2 class="text-2xl font-bold text-gray-800 mb-4">Инструкция</h2>
-                    <div class="prose max-w-none">
+                    <div>
                         {!! nl2br(e($recipe->instructions)) !!}
                     </div>
                 </div>
@@ -62,7 +59,7 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Похожие рецепты</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @foreach($relatedRecipes as $relatedRecipe)
-                    <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <div class="bg-white rounded-lg shadow-sm p-4">
                         <h3 class="font-semibold text-gray-800 mb-2">{{ $relatedRecipe->title }}</h3>
                         <a href="{{ route('recipes.show', $relatedRecipe->slug) }}" class="text-green-600 hover:text-green-800 text-sm">
                             Смотреть рецепт

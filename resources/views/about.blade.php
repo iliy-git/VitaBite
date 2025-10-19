@@ -10,11 +10,11 @@
 @include('navbar')
 
 <main class="container mx-auto px-4 py-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
         <div class="p-8">
             <h1 class="text-4xl font-bold text-gray-800 mb-6">О VitaBite</h1>
 
-            <div class="prose max-w-none text-lg text-gray-700 leading-relaxed">
+            <div class="text-lg text-gray-700 leading-relaxed">
                 <p class="mb-6">
                     <strong>VitaBite</strong> - это проект, созданный с любовью к здоровому образу жизни и правильному питанию.
                     Мы верим, что здоровое питание должно быть доступным, вкусным и простым.
