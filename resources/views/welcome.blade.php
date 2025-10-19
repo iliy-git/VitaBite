@@ -83,7 +83,65 @@
             @endforeach
         </div>
     </section>
+    <script>
+        (function() {
+            var captcha_version = 11;
+            var captcha_done = false;
+            var captcha_label = "Подтвердите, что вы не робот";
+            var captcha_enemies = 4;
+            var sound = true;
+            var countdown = false;
+
+            var overlay = document.createElement('div');
+            overlay.id = 'doom-captcha-overlay';
+            overlay.style.cssText = `
+              position: fixed;
+              top: 0; left: 0;
+              width: 100%; height: 100%;
+              background: rgba(0,0,0,0.92);
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              z-index: 9999999;
+              font-family: monospace;
+              color: white;
+            `;
+
+            var html = '<p style="margin-bottom:20px; font-size:18px;">' + captcha_label + '</p>';
+            html += '<iframe id="doom_captcha" src="https://vivirenremoto.github.io/doomcaptcha/captcha.html?version=' + captcha_version + '&sound=' + sound + '&countdown=' + countdown + '&enemies=' + captcha_enemies + '" style="width:600px;height:300px;border:3px solid #333;"></iframe>';
+
+            overlay.innerHTML = html;
+            document.body.appendChild(overlay);
+
+            window.addEventListener('message', function(e) {
+                if (e.origin === 'https://vivirenremoto.github.io') {
+                    captcha_done = true;
+                    document.getElementById('doom_captcha').style.borderColor = '#0f0';
+                    setTimeout(function() {
+                        overlay.style.display = 'none';
+                    }, 500);
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!captcha_done && !e.target.closest('#doom_captcha')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+
+            document.addEventListener('keydown', function(e) {
+                if (!captcha_done) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true);
+        })();
+    </script>
+
 </main>
+
 
 @include('partials.footer')
 </body>

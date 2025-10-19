@@ -9,13 +9,9 @@
                 <a href="{{ route('recipes.index') }}" class="hover:text-green-200">Рецепты</a>
                 <a href="{{ route('about') }}" class="hover:text-green-200">О нас</a>
 
-                @auth
-                    @if(Auth::user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}" class="hover:text-green-200">
-                            <i class="fas fa-cog mr-1"></i>Админка
-                        </a>
-                    @endif
-                @endauth
+                <a href="{{ route('admin.dashboard') }}" class="hover:text-green-200">
+                    <i class="fas fa-cog mr-1"></i>Админка
+                </a>
             </div>
         </div>
     </div>
