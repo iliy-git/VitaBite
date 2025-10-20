@@ -9,7 +9,8 @@ class RecipeController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Recipe::where('is_published', true);
+        $query = Recipe::where('is_published', true)
+            ->withCount('likes');
 
         if ($request->has('category') && $request->category) {
             $query->where('category', $request->category);
@@ -60,14 +61,18 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::where('slug', $slug)
             ->where('is_published', true)
+            ->withCount('likes')
             ->firstOrFail();
+
+        $isLiked = auth()->check() ? $recipe->isLikedByUser(auth()->id()) : false;
 
         $relatedRecipes = Recipe::where('category', $recipe->category)
             ->where('id', '!=', $recipe->id)
             ->where('is_published', true)
+            ->withCount('likes')
             ->limit(3)
             ->get();
 
-        return view('recipes.show', compact('recipe', 'relatedRecipes'));
+        return view('recipes.show', compact('recipe', 'relatedRecipes', 'isLiked'));
     }
 }

@@ -24,7 +24,7 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <span class="text-gray-300">Администратор</span>
+                <span class="text-gray-300">{{ auth()->user()->name }}</span>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">

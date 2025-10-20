@@ -49,4 +49,27 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    public function likeRecipes()
+    {
+        return $this->hasMany(LikeRecipe::class);
+    }
+
+    public function likedRecipes()
+    {
+        return $this->belongsToMany(Recipe::class, 'like_recipes', 'user_id', 'recipe_id')
+            ->withTimestamps();
+    }
+
+    public function postBookmarks()
+    {
+        return $this->hasMany(PostBookmark::class);
+    }
+
+
+    public function bookmarkedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_bookmarks', 'user_id', 'post_id')
+            ->withTimestamps();
+    }
 }

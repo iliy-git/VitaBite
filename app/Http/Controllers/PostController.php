@@ -10,6 +10,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('is_published', true)
+            ->withCount('bookmarks')
             ->orderBy('created_at', 'desc')
             ->paginate(9);
 
@@ -20,14 +21,11 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)
             ->where('is_published', true)
+            ->withCount('bookmarks')
             ->firstOrFail();
 
-        $relatedPosts = Post::where('category', $post->category)
-            ->where('id', '!=', $post->id)
-            ->where('is_published', true)
-            ->limit(3)
-            ->get();
+        $isBookmarked = auth()->check() ? $post->isBookmarkedByUser(auth()->id()) : false;
 
-        return view('posts.show', compact('post', 'relatedPosts'));
+        return view('posts.show', compact('post', 'isBookmarked'));
     }
 }

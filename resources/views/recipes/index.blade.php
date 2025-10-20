@@ -51,12 +51,23 @@
                             </div>
                             <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ $recipe->title }}</h3>
                             <p class="text-gray-600 mb-4 line-clamp-2">{{ $recipe->description }}</p>
+
                             <div class="flex justify-between text-sm text-gray-500 mb-4">
                                 <span>{{ $recipe->prep_time + $recipe->cook_time }} мин</span>
                                 <span>{{ $recipe->servings }} порции</span>
                             </div>
-                            <div class="flex justify-between items-center">
+
+                            <div class="flex justify-between items-center mb-4">
+                                <div class="flex items-center gap-2 text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                    <span class="text-sm">{{ $recipe->likes_count }}</span>
+                                </div>
                                 <span class="text-sm text-gray-500">{{ $recipe->created_at->format('d.m.Y') }}</span>
+                            </div>
+
+                            <div class="flex justify-between items-center">
                                 <a href="{{ route('recipes.show', $recipe->slug) }}" class="text-green-600 hover:text-green-800 font-medium transition-colors duration-200">
                                     Смотреть рецепт →
                                 </a>
