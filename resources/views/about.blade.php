@@ -55,6 +55,26 @@
                     </div>
                 </div>
 
+                <div class="mt-12 pt-8 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Контактная информация</h2>
+                    <div class="bg-gray-50 p-6 rounded-lg mx-auto">
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <span class="font-medium text-gray-700 min-w-20">ФИО:</span>
+                                <span class="text-gray-600">Усенко Ольга Валентиновна</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-gray-700 min-w-20">Телефон:</span>
+                                <span class="text-gray-600">+7 (800) 555-35-35</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-medium text-gray-700 min-w-20">Email:</span>
+                                <span class="text-gray-600">usenkoolya@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p class="text-center text-gray-600 mt-8 border-t pt-6">
                     Присоединяйтесь к нашему сообществу и начните свой путь к здоровому образу жизни уже сегодня!
                 </p>
